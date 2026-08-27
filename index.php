@@ -2,38 +2,58 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Práctica 01 - PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurely - Tienda de belleza</title>
 </head>
 <body>
 
-    <h1>Mi primera página web con PHP</h1>
+    <header>
+        <h1>Saurely</h1>
+        <p>Tu espacio de belleza y cuidado de la piel</p>
+    </header>
 
-    <?php
+    <main>
 
-    $nombre = "Patricia Segura Resendiz";
-    $edad = 22;
-    $carrera = "Ingeniería en Sistemas Computacionales";
+        <section>
+            <h2>Producto destacado</h2>
 
-    $precio = 250.50;
-    $cantidad = 3;
-    $disponible = true;
+            <?php
 
-    $total = $precio * $cantidad;
+            $producto = "Limpiador facial";
+            $precio = 250.50;
+            $cantidad = 3;
 
-    echo "<h2>Datos del estudiante</h2>";
-    echo "<p>Nombre: $nombre</p>";
-    echo "<p>Edad: $edad años</p>";
-    echo "<p>Carrera: $carrera</p>";
+            echo "<p><strong>Producto:</strong> $producto</p>";
+            echo "<p><strong>Precio:</strong> $$precio</p>";
+            echo "<p><strong>Cantidad:</strong> $cantidad</p>";
 
-    echo "<h2>Tipos de datos</h2>";
-    echo "<p>Precio: $$precio</p>";
-    echo "<p>Cantidad: $cantidad</p>";
-    echo "<p>Disponible: $disponible</p>";
+            ?>
+        </section>
 
-    echo "<h2>Operación</h2>";
-    echo "<p>Total: $$total</p>";
+        <section>
+            <h2>Compra</h2>
 
-    ?>
+            <?php
+
+            $total = $precio * $cantidad;
+
+            echo "<p><strong>Total de la compra:</strong> $$total</p>";
+
+            ?>
+        </section>
+
+        <section>
+            <h2>Mensaje</h2>
+
+            <?php
+
+            echo "<p>En Saurely puedes encontrar productos para el cuidado de tu piel.</p>";
+
+            ?>
+
+        </section>
+
+    </main>
 
 </body>
 </html>
