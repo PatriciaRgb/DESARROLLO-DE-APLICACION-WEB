@@ -9,7 +9,16 @@
     <h1>Mi primera página web con PHP</h1>
 
     <?php
-        echo "<p>Hola, esta página está ejecutando PHP.</p>";
+
+    $nombre = "Patricia Segura Resendiz";
+    $edad = 22;
+    $carrera = "Ingeniería en Sistemas Computacionales";
+
+    echo "<h2>Datos del estudiante</h2>";
+    echo "<p>Nombre: $nombre</p>";
+    echo "<p>Edad: $edad años</p>";
+    echo "<p>Carrera: $carrera</p>";
+
     ?>
 
 </body>
