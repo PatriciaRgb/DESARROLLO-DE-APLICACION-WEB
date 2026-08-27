@@ -14,10 +14,19 @@
     $edad = 22;
     $carrera = "Ingeniería en Sistemas Computacionales";
 
+    $precio = 250.50;
+    $cantidad = 3;
+    $disponible = true;
+
     echo "<h2>Datos del estudiante</h2>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>Edad: $edad años</p>";
     echo "<p>Carrera: $carrera</p>";
+
+    echo "<h2>Tipos de datos</h2>";
+    echo "<p>Precio: $$precio</p>";
+    echo "<p>Cantidad: $cantidad</p>";
+    echo "<p>Disponible: $disponible</p>";
 
     ?>
 
