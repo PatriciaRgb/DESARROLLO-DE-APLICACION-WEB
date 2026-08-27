@@ -18,6 +18,8 @@
     $cantidad = 3;
     $disponible = true;
 
+    $total = $precio * $cantidad;
+
     echo "<h2>Datos del estudiante</h2>";
     echo "<p>Nombre: $nombre</p>";
     echo "<p>Edad: $edad años</p>";
@@ -27,6 +29,9 @@
     echo "<p>Precio: $$precio</p>";
     echo "<p>Cantidad: $cantidad</p>";
     echo "<p>Disponible: $disponible</p>";
+
+    echo "<h2>Operación</h2>";
+    echo "<p>Total: $$total</p>";
 
     ?>
 
