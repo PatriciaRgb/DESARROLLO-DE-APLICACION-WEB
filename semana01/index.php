@@ -7,11 +7,17 @@
 <body>
     <h1>El Árbol de Higos</h1>
     <?php
-        $autor = "Sylvia Plath";
-        $libro = "The Bell Jar";
+        $autor = "Sylvia Plath";       // string
+        $libro = "The Bell Jar";       // string
+        $precio = 250.50;              // float
+        $cantidad = 2;                 // integer
+        $disponible = true;            // boolean
 
         echo "<p>Autora: $autor</p>";
         echo "<p>Libro: $libro</p>";
+        echo "<p>Precio: $precio</p>";
+        echo "<p>Cantidad: $cantidad</p>";
+        echo "<p>Disponible: " . ($disponible ? "Sí" : "No") . "</p>";
     ?>
 </body>
 </html>
