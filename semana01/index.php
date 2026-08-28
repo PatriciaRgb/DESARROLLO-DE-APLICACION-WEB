@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>El Árbol de Higos</h1>
+    <p>Una pequeña librería para quienes aman leer, pensar y explorar.</p>
+
+    <h2>Libro destacado</h2>
     <?php
         $autor = "Sylvia Plath";       // string
         $libro = "The Bell Jar";       // string
@@ -14,12 +17,12 @@
         $disponible = true;            // boolean
         $total = $precio * $cantidad;  // operación aritmética
 
-        echo "<p>Autora: $autor</p>";
-        echo "<p>Libro: $libro</p>";
-        echo "<p>Precio: $precio</p>";
-        echo "<p>Cantidad: $cantidad</p>";
-        echo "<p>Disponible: " . ($disponible ? "Sí" : "No") . "</p>";
-        echo "<p>Total: $total</p>";
+        echo "<p><strong>Autora:</strong> $autor</p>";
+        echo "<p><strong>Libro:</strong> $libro</p>";
+        echo "<p><strong>Precio:</strong> $precio</p>";
+        echo "<p><strong>Cantidad:</strong> $cantidad</p>";
+        echo "<p><strong>Disponible:</strong> " . ($disponible ? "Sí" : "No") . "</p>";
+        echo "<p><strong>Total:</strong> $total</p>";
     ?>
 </body>
 </html>
