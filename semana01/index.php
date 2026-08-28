@@ -7,7 +7,11 @@
 <body>
     <h1>El Árbol de Higos</h1>
     <?php
-        echo "<p>Esta es la primera página generada con PHP.</p>";
+        $autor = "Sylvia Plath";
+        $libro = "The Bell Jar";
+
+        echo "<p>Autora: $autor</p>";
+        echo "<p>Libro: $libro</p>";
     ?>
 </body>
 </html>
