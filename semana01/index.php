@@ -12,12 +12,14 @@
         $precio = 250.50;              // float
         $cantidad = 2;                 // integer
         $disponible = true;            // boolean
+        $total = $precio * $cantidad;  // operación aritmética
 
         echo "<p>Autora: $autor</p>";
         echo "<p>Libro: $libro</p>";
         echo "<p>Precio: $precio</p>";
         echo "<p>Cantidad: $cantidad</p>";
         echo "<p>Disponible: " . ($disponible ? "Sí" : "No") . "</p>";
+        echo "<p>Total: $total</p>";
     ?>
 </body>
 </html>
