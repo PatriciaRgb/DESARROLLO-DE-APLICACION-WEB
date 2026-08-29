@@ -13,9 +13,10 @@
         $autor = "Sylvia Plath";       // string
         $libro = "The Bell Jar";       // string
         $precio = 250.50;              // float
-        $cantidad = 2;                 // integer
+        $cantidad = 5;                 // integer
         $disponible = true;            // boolean
-        $total = $precio * $cantidad;  // operación aritmética
+        $total = $precio + $cantidad;  // operación aritmética
+      
 
         echo "<p><strong>Autora:</strong> $autor</p>";
         echo "<p><strong>Libro:</strong> $libro</p>";
@@ -23,6 +24,7 @@
         echo "<p><strong>Cantidad:</strong> $cantidad</p>";
         echo "<p><strong>Disponible:</strong> " . ($disponible ? "Sí" : "No") . "</p>";
         echo "<p><strong>Total:</strong> $total</p>";
+        
     ?>
 </body>
 </html>
