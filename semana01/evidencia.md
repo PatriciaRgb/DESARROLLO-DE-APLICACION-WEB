@@ -4,7 +4,7 @@
 <img src="img/00-logo.png" width="100" alt="Logo">
 </td>
 <td align="right" style="border:none; padding: 20px 10px;">
-<h1 style="color:#c2185b; font-family: Georgia, serif; letter-spacing: 2px; margin-bottom:5px;">EL ÁRBOL DE HIGOS</h1>
+<h1 style="color:#c2185b; font-family: Georgia, serif; letter-spacing: 2px; margin-bottom:5px;">🌳🌸🌸🌸 EL ÁRBOL DE HIGOS 🌸🌸🌸🌳</h1>
 <p style="color:#ad1457; font-style: italic; font-size: 15px; margin:0;">Semana 01 — Primera página web con PHP</p>
 <p style="color:#e91e8c; font-size: 13px; margin:0;">Desarrollo de Aplicaciones Web</p>
 </td>
@@ -36,7 +36,7 @@
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Aplicación web</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🌐 Aplicación web 🌸🌸🌸🌸🌸</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 Una aplicación web es un programa al que se accede mediante un navegador. En mi caso, construí una pequeña tienda de libros llamada "El Árbol de Higos", donde se muestra información de un libro (autora, título, precio, cantidad y total) generada mediante PHP.
@@ -44,7 +44,7 @@ Una aplicación web es un programa al que se accede mediante un navegador. En mi
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Cliente y servidor</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">💻 Cliente y servidor 🌸💗🌸</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 El cliente es quien pide o solicita algo. En mi práctica, el cliente fue mi navegador (Chrome): cada vez que entraba a <code>localhost:8000</code> o recargaba la página, el navegador le pedía la página al servidor.
@@ -54,7 +54,7 @@ El servidor es el programa que recibe esa petición y responde con lo que se le 
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">HTTP</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">📡 HTTP 🌷🌸🌸</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 HTTP es el protocolo, es decir las reglas, que usan el navegador y el servidor para comunicarse. Gracias a HTTP, cuando pedí la página, el servidor supo cómo responderme correctamente, con el código de estado <code>200 OK</code> que comprobé en la pestaña Network de las herramientas de desarrollador.
@@ -62,7 +62,7 @@ HTTP es el protocolo, es decir las reglas, que usan el navegador y el servidor p
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">PHP</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🐘 PHP 💕🌸🌸</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 PHP es un lenguaje de programación que se ejecuta del lado del servidor, nunca en el navegador. Lo comprobé en mi experimento: al revisar la respuesta en las herramientas de desarrollador, no vi ninguna línea de código PHP, solo vi el resultado ya convertido en HTML.
@@ -75,7 +75,7 @@ PHP es un lenguaje de programación que se ejecuta del lado del servidor, nunca 
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">HTML</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🧩 HTML 🌸🌸🌺</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 HTML es el lenguaje que le da estructura a la página: títulos, párrafos, negritas, etc. Es lo único que el navegador entiende y puede mostrar; por eso PHP siempre termina generando HTML antes de enviarlo al navegador.
@@ -83,7 +83,7 @@ HTML es el lenguaje que le da estructura a la página: títulos, párrafos, negr
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">localhost</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🏠 localhost 🌸🌸💐</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 <code>localhost</code> significa "esta misma computadora". Cuando entro a <code>http://localhost:8000</code>, le estoy diciendo al navegador que busque el servidor que está corriendo en mi propia máquina, sin salir a internet.
@@ -96,7 +96,7 @@ HTML es el lenguaje que le da estructura a la página: títulos, párrafos, negr
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Variables y tipos de datos</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🧮 Variables y tipos de datos 🌸🌸🌸</h2>
 
 <table style="width:100%; border-collapse: collapse;">
 <tr style="background-color:#c2185b; color:#ffffff;">
@@ -130,7 +130,7 @@ Una variable es un espacio donde guardo un dato para usarlo después en el progr
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Operadores</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">➕ Operadores 🌸🌸💗</h2>
 
 ```php
 $total = $precio * $cantidad;
@@ -144,7 +144,7 @@ Los operadores son símbolos que permiten hacer operaciones con los datos. Usé 
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">PHP + HTML</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🧩 PHP + HTML 🌷</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 Integré PHP dentro del HTML usando las etiquetas <code>&lt;?php ?&gt;</code>. Dentro de ese bloque declaré mis variables y usé <code>echo</code> para imprimir la información directamente entre las etiquetas HTML como <code>&lt;p&gt;</code> y <code>&lt;strong&gt;</code>, de modo que el resultado final se viera integrado dentro de la estructura de la página.
@@ -157,7 +157,7 @@ Integré PHP dentro del HTML usando las etiquetas <code>&lt;?php ?&gt;</code>. D
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Experimento con herramientas de desarrollador</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🔬 Experimento con herramientas de desarrollador 💕</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 <b>¿Qué archivo solicitó el navegador?</b><br>
@@ -186,7 +186,7 @@ Porque PHP se ejecuta en el servidor, no en el navegador. Antes de enviar la res
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Pruebas realizadas</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🧪 Pruebas realizadas 🌺</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 <b>Prueba 1 — Modificación de datos</b><br>
@@ -235,7 +235,7 @@ Quité el punto y coma al final de <code>$paginas = 244;</code>. Al recargar apa
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Problemas encontrados</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">❌ Problemas encontrados 💐</h2>
 
 <table style="width:100%; border-collapse: collapse;">
 <tr style="background-color:#fce4ec;"><td style="padding:8px;"><b>Qué ocurrió</b></td><td style="padding:8px;">El navegador mostró "ERR_CONNECTION_REFUSED" al recargar la página.</td></tr>
@@ -253,7 +253,7 @@ Quité el punto y coma al final de <code>$paginas = 244;</code>. Al recargar apa
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Soluciones aplicadas</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">🛠️ Soluciones aplicadas 🌸</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 Para el error de conexión, volví a levantar el servidor con el mismo comando y aprendí a usar una segunda ventana de Git Bash exclusiva para los comandos de Git, sin tocar la terminal donde corre el servidor.
@@ -263,7 +263,7 @@ Para el error de sintaxis, identifiqué que faltaba un punto y coma al final de 
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">¿Qué recibe el navegador?</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">📄 ¿Qué recibe el navegador? 💗</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 El navegador recibe solo HTML puro, con la información ya resuelta (por ejemplo, ve "Total: 501" en vez de la fórmula <code>$precio * $cantidad</code>). Todo el trabajo de PHP ya se hizo antes de que la respuesta llegara al navegador, porque el navegador solo sabe interpretar HTML, CSS y JavaScript.
@@ -271,7 +271,7 @@ El navegador recibe solo HTML puro, con la información ya resuelta (por ejemplo
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Reflexión final</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">💭 Reflexión final 🌷</h2>
 
 <blockquote style="border-left: 4px solid #f48fb1; background:#fff0f5; padding: 10px 15px; color:#333;">
 Desde que escribo <code>http://localhost:8000</code> en el navegador, este envía una solicitud HTTP al servidor que tengo corriendo en mi propia computadora. El servidor recibe esa solicitud, busca el archivo <code>index.php</code>, y PHP procesa todo el código: crea las variables, hace los cálculos y genera el HTML final. Ese HTML es lo único que regresa al navegador, y por eso, aunque yo escribí código PHP, nunca lo veo directamente en pantalla ni en el código fuente: solo veo el resultado. Esta práctica me ayudó a entender que una página web no aparece "mágicamente", sino que es el resultado de una comunicación constante entre cliente y servidor.
@@ -279,7 +279,7 @@ Desde que escribo <code>http://localhost:8000</code> en el navegador, este enví
 
 <br>
 
-<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">Historial de commits</h2>
+<h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">💾 Historial de commits 💕</h2>
 
 <table style="width:100%; border-collapse: collapse;">
 <tr style="background-color:#c2185b; color:#ffffff;"><th style="padding:8px;">#</th><th style="padding:8px; text-align:left;">Commit</th></tr>
