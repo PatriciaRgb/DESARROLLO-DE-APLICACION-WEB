@@ -9,10 +9,19 @@
     <h2>Reseña recibida</h2>
 
     <?php
-        $nombre = $_GET['nombre'];
-        $correo = $_GET['correo'];
-        $calificacion = $_GET['calificacion'];
-        $comentario = $_GET['comentario'];
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $nombre = $_GET['nombre'];
+            $correo = $_GET['correo'];
+            $calificacion = $_GET['calificacion'];
+            $comentario = $_GET['comentario'];
+            echo "<p><em>Datos recibidos mediante GET</em></p>";
+        } else {
+            $nombre = $_POST['nombre'];
+            $correo = $_POST['correo'];
+            $calificacion = $_POST['calificacion'];
+            $comentario = $_POST['comentario'];
+            echo "<p><em>Datos recibidos mediante POST</em></p>";
+        }
 
         echo "<p><strong>Nombre:</strong> $nombre</p>";
         echo "<p><strong>Correo:</strong> $correo</p>";
