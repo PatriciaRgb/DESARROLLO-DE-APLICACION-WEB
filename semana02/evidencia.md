@@ -1,6 +1,15 @@
-<h1 align="center" style="color:#c2185b; font-family: Georgia, serif; letter-spacing: 2px;">💐💐EL ÁRBOL DE HIGOS💐💐</h1>
-<p align="center" style="color:#ad1457; font-style: italic; font-size: 15px;">Semana 02 — Formularios: el usuario interactúa</p>
-<p align="center" style="color:#e91e8c; font-size: 13px;">Desarrollo de Aplicaciones Web</p>
+<table style="width:100%; border:none; margin-bottom:20px;">
+<tr>
+<td width="120" align="center" style="border:none;">
+<img src="img/00-logo.png" width="100" alt="Logo">
+</td>
+<td align="right" style="border:none; padding: 20px 10px;">
+<h1 style="color:#c2185b; font-family: Georgia, serif; letter-spacing: 2px; margin-bottom:5px;">💐💐EL ÁRBOL DE HIGOS💐💐</h1>
+<p style="color:#ad1457; font-style: italic; font-size: 15px; margin:0;">Semana 02 — Formularios: el usuario interactúa</p>
+<p style="color:#e91e8c; font-size: 13px; margin:0;">Desarrollo de Aplicaciones Web</p>
+</td>
+</tr>
+</table>
 
 <br>
 
