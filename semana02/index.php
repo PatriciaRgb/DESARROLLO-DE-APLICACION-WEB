@@ -19,6 +19,9 @@
         <label for="calificacion">Calificación (1-5):</label><br>
         <input type="number" id="calificacion" name="calificacion" min="1" max="5"><br><br>
 
+        <label for="libro">Libro reseñado:</label><br>
+        <input type="text" id="libro" name="libro"><br><br>
+
         <label for="comentario">Tu reseña:</label><br>
         <textarea id="comentario" name="comentario" rows="4" cols="40"></textarea><br><br>
 
@@ -40,6 +43,9 @@
 
         <label for="calificacion2">Calificación (1-5):</label><br>
         <input type="number" id="calificacion2" name="calificacion" min="1" max="5"><br><br>
+
+        <label for="libro2">Libro reseñado:</label><br>
+        <input type="text" id="libro2" name="libro"><br><br>
 
         <label for="comentario2">Tu reseña:</label><br>
         <textarea id="comentario2" name="comentario" rows="4" cols="40"></textarea><br><br>
