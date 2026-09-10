@@ -1,0 +1,16 @@
+body {
+    background-color: #fce4ec;
+    font-family: Georgia, serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #c2185b;
+    text-align: center;
+}
+
+h2 {
+    color: #ad1457;
+}
