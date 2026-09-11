@@ -14,3 +14,53 @@ h1 {
 h2 {
     color: #ad1457;
 }
+.destacado {
+    color: #e91e8c;
+    font-weight: bold;
+}
+
+#principal {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}
+form {
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 25px;
+    border: 2px solid #f48fb1;
+    border-radius: 12px;
+}
+
+label {
+    display: block;
+    color: #ad1457;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #f48fb1;
+    border-radius: 6px;
+    font-family: Georgia, serif;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #c2185b;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ad1457;
+}

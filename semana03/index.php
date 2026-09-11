@@ -6,54 +6,57 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>El Árbol de Higos</h1>
-    <h2>Deja tu reseña (usando GET)</h2>
+    <div id="principal">
 
-    <form action="procesar.php" method="GET">
+        <h1>El Árbol de Higos</h1>
+        <h2 class="destacado">Deja tu reseña (usando GET)</h2>
 
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br><br>
+        <form action="procesar.php" method="GET">
 
-        <label for="correo">Correo electrónico:</label><br>
-        <input type="email" id="correo" name="correo"><br><br>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br><br>
 
-        <label for="calificacion">Calificación (1-5):</label><br>
-        <input type="number" id="calificacion" name="calificacion" min="1" max="5"><br><br>
+            <label for="correo">Correo electrónico:</label><br>
+            <input type="email" id="correo" name="correo"><br><br>
 
-        <label for="libro">Libro reseñado:</label><br>
-        <input type="text" id="libro" name="libro"><br><br>
+            <label for="calificacion">Calificación (1-5):</label><br>
+            <input type="number" id="calificacion" name="calificacion" min="1" max="5"><br><br>
 
-        <label for="comentario">Tu reseña:</label><br>
-        <textarea id="comentario" name="comentario" rows="4" cols="40"></textarea><br><br>
+            <label for="libro">Libro reseñado:</label><br>
+            <input type="text" id="libro" name="libro"><br><br>
 
-        <button type="submit">Enviar reseña (GET)</button>
+            <label for="comentario">Tu reseña:</label><br>
+            <textarea id="comentario" name="comentario" rows="4" cols="40"></textarea><br><br>
 
-    </form>
+            <button type="submit">Enviar reseña (GET)</button>
 
-    <hr>
+        </form>
 
-    <h2>Deja tu reseña (usando POST)</h2>
+        <hr>
 
-    <form action="procesar.php" method="POST">
+        <h2>Deja tu reseña (usando POST)</h2>
 
-        <label for="nombre2">Nombre:</label><br>
-        <input type="text" id="nombre2" name="nombre"><br><br>
+        <form action="procesar.php" method="POST">
 
-        <label for="correo2">Correo electrónico:</label><br>
-        <input type="email" id="correo2" name="correo"><br><br>
+            <label for="nombre2">Nombre:</label><br>
+            <input type="text" id="nombre2" name="nombre"><br><br>
 
-        <label for="calificacion2">Calificación (1-5):</label><br>
-        <input type="number" id="calificacion2" name="calificacion" min="1" max="5"><br><br>
+            <label for="correo2">Correo electrónico:</label><br>
+            <input type="email" id="correo2" name="correo"><br><br>
 
-        <label for="libro2">Libro reseñado:</label><br>
-        <input type="text" id="libro2" name="libro"><br><br>
+            <label for="calificacion2">Calificación (1-5):</label><br>
+            <input type="number" id="calificacion2" name="calificacion" min="1" max="5"><br><br>
 
-        <label for="comentario2">Tu reseña:</label><br>
-        <textarea id="comentario2" name="comentario" rows="4" cols="40"></textarea><br><br>
+            <label for="libro2">Libro reseñado:</label><br>
+            <input type="text" id="libro2" name="libro"><br><br>
 
-        <button type="submit">Enviar reseña (POST)</button>
+            <label for="comentario2">Tu reseña:</label><br>
+            <textarea id="comentario2" name="comentario" rows="4" cols="40"></textarea><br><br>
 
-    </form>
+            <button type="submit">Enviar reseña (POST)</button>
 
+        </form>
+
+    </div>
 </body>
 </html>
