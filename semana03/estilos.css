@@ -64,3 +64,9 @@ button {
 button:hover {
     background-color: #ad1457;
 }
+.formularios-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}

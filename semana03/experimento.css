@@ -21,3 +21,25 @@ button {
     border-radius: 5px;
     font-size: 16px;
 }
+.caja {
+    width: 300px;
+    padding: 80px;
+    border: 2px solid black;
+    margin: 20px;
+    background-color: lightyellow;
+}
+.contenedor {
+    display: flex;
+    background-color: lightblue;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
+
+.contenedor div {
+    background-color: white;
+    border: 1px solid black;
+    padding: 15px;
+    margin: 5px;
+}
