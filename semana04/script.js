@@ -1,0 +1,1 @@
+   console.log("Bienvenida a El Árbol de Higos");
