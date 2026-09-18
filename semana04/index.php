@@ -9,7 +9,7 @@
     <div id="principal">
 
         <h1>El Árbol de Higos</h1>
-
+        <button id="btnSaludar">Saludar</button>
         <div class="formularios-container">
 
             <div>
