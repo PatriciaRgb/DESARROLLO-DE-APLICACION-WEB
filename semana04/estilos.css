@@ -86,3 +86,8 @@ button:hover {
         font-size: 28px;
     }
 }
+
+.titulo-clickeado {
+    color: #e91e8c;
+    font-size: 42px;
+}

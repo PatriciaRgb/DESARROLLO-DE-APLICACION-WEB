@@ -8,8 +8,10 @@
 <body>
     <div id="principal">
 
-        <h1>El Árbol de Higos</h1>
+        <h1 id="titulo">El Árbol de Higos</h1>
+
         <button id="btnSaludar">Saludar</button>
+
         <div class="formularios-container">
 
             <div>
@@ -66,6 +68,6 @@
 
     </div>
 
-       <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
