@@ -91,3 +91,29 @@ button:hover {
     color: #e91e8c;
     font-size: 42px;
 }
+
+.mensaje-error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border: 1px solid #c62828;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.mensaje-exito {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border: 1px solid #2e7d32;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+#informacion {
+    background-color: #fff0f5;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #f48fb1;
+}

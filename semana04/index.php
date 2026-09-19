@@ -36,6 +36,8 @@
 
                     <button type="submit">Enviar reseña (GET)</button>
 
+                    <div id="mensajeGET"></div>
+
                 </form>
             </div>
 
@@ -64,6 +66,11 @@
                 </form>
             </div>
 
+        </div>
+
+        <button id="btnInfo">Mostrar / Ocultar información</button>
+        <div id="informacion">
+            <p>El Árbol de Higos es una pequeña tienda de libros para quienes aman leer, pensar y explorar. Cada reseña que dejas ayuda a otros lectores a descubrir su próxima historia favorita.</p>
         </div>
 
     </div>

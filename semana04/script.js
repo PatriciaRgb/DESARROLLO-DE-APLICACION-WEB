@@ -20,42 +20,61 @@ document.getElementById("titulo").addEventListener("click", function() {
     document.getElementById("titulo").textContent = "¡Bienvenida, lectora!";
     document.getElementById("titulo").classList.add("titulo-clickeado");
 });
+
 document.getElementById("formularioGET").addEventListener("submit", function(event) {
 
     let nombre = document.getElementById("nombre").value;
     let correo = document.getElementById("correo").value;
-    let calificacion = document.getElementById("calificacion").value;
+    let calif = document.getElementById("calificacion").value;
     let libro = document.getElementById("libro").value;
     let comentario = document.getElementById("comentario").value;
 
+    let mensaje = document.getElementById("mensajeGET");
+    mensaje.textContent = "";
+    mensaje.classList.remove("mensaje-error", "mensaje-exito");
+
     if (nombre === "") {
         event.preventDefault();
-        alert("El nombre es obligatorio");
+        mensaje.textContent = "El nombre es obligatorio";
+        mensaje.classList.add("mensaje-error");
         return;
     }
 
     if (correo === "") {
         event.preventDefault();
-        alert("El correo es obligatorio");
+        mensaje.textContent = "El correo es obligatorio";
+        mensaje.classList.add("mensaje-error");
         return;
     }
 
-    if (calificacion === "" || calificacion < 1 || calificacion > 5) {
+    if (calif === "" || calif < 1 || calif > 5) {
         event.preventDefault();
-        alert("La calificación debe ser un número entre 1 y 5");
+        mensaje.textContent = "La calificación debe ser un número entre 1 y 5";
+        mensaje.classList.add("mensaje-error");
         return;
     }
 
     if (libro === "") {
         event.preventDefault();
-        alert("Debes indicar qué libro estás reseñando");
+        mensaje.textContent = "Debes indicar qué libro estás reseñando";
+        mensaje.classList.add("mensaje-error");
         return;
     }
 
     if (comentario === "") {
         event.preventDefault();
-        alert("El comentario es obligatorio");
+        mensaje.textContent = "El comentario es obligatorio";
+        mensaje.classList.add("mensaje-error");
         return;
     }
 
+});
+
+document.getElementById("btnInfo").addEventListener("click", function() {
+    let info = document.getElementById("informacion");
+    if (info.style.display === "none") {
+        info.style.display = "block";
+    } else {
+        info.style.display = "none";
+    }
 });
