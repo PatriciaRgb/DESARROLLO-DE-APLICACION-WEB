@@ -10,17 +10,17 @@
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $nombre = $_GET['nombre'];
-            $correo = $_GET['correo'];
-            $calificacion = $_GET['calificacion'];
-            $libro = $_GET['libro'];
-            $comentario = $_GET['comentario'];
+            $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : "";
+            $correo = isset($_GET['correo']) ? $_GET['correo'] : "";
+            $calificacion = isset($_GET['calificacion']) ? $_GET['calificacion'] : "";
+            $libro = isset($_GET['libro']) ? $_GET['libro'] : "";
+            $comentario = isset($_GET['comentario']) ? $_GET['comentario'] : "";
         } else {
-            $nombre = $_POST['nombre'];
-            $correo = $_POST['correo'];
-            $calificacion = $_POST['calificacion'];
-            $libro = $_POST['libro'];
-            $comentario = $_POST['comentario'];
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
+            $correo = isset($_POST['correo']) ? $_POST['correo'] : "";
+            $calificacion = isset($_POST['calificacion']) ? $_POST['calificacion'] : "";
+            $libro = isset($_POST['libro']) ? $_POST['libro'] : "";
+            $comentario = isset($_POST['comentario']) ? $_POST['comentario'] : "";
         }
 
         $errores = array();
