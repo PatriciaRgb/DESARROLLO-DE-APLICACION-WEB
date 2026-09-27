@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Reseña recibida</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h1>El Árbol de Higos</h1>
     <h2>Resultado de tu reseña</h2>
 
     <?php
+        require_once "conexion.php";
+
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : "";
             $correo = isset($_GET['correo']) ? $_GET['correo'] : "";
@@ -57,14 +60,23 @@
             }
             echo "</ul>";
         } else {
-            echo "<h3>✔️ Información recibida correctamente</h3>";
-            echo "<p><strong>Nombre:</strong> $nombre</p>";
-            echo "<p><strong>Correo:</strong> $correo</p>";
-            echo "<p><strong>Calificación:</strong> $calificacion</p>";
-            echo "<p><strong>Libro:</strong> $libro</p>";
-            echo "<p><strong>Comentario:</strong> $comentario</p>";
+            $sql = "INSERT INTO resenas (nombre, correo, libro, calificacion, comentario)
+                    VALUES ('$nombre', '$correo', '$libro', '$calificacion', '$comentario')";
+
+            if ($conexion->query($sql)) {
+                echo "<h3>✔️ Reseña guardada correctamente en la base de datos</h3>";
+                echo "<p><strong>Nombre:</strong> $nombre</p>";
+                echo "<p><strong>Correo:</strong> $correo</p>";
+                echo "<p><strong>Calificación:</strong> $calificacion</p>";
+                echo "<p><strong>Libro:</strong> $libro</p>";
+                echo "<p><strong>Comentario:</strong> $comentario</p>";
+            } else {
+                echo "<p>Error al guardar: " . $conexion->error . "</p>";
+            }
         }
     ?>
+
+    <p><a href="index.php">Volver al formulario</a></p>
 
 </body>
 </html>
