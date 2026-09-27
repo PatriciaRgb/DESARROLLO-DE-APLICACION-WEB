@@ -14,7 +14,7 @@
         <?php
             require_once "conexion.php";
 
-            $sql = "SELECT * FROM resenas";
+            $sql = "SELECT * FROM resenas ORDER BY calificacion DESC";
             $resultado = $conexion->query($sql);
         ?>
 
