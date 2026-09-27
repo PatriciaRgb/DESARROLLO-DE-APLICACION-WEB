@@ -117,3 +117,26 @@ button:hover {
     border-radius: 10px;
     border: 1px solid #f48fb1;
 }
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #c2185b;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #f48fb1;
+}
+
+tr:nth-child(even) {
+    background-color: #fce4ec;
+}
