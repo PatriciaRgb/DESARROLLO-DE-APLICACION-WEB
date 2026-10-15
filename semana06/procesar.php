@@ -1,82 +1,101 @@
+<?php
+require_once "conexion.php";
+
+// Los formularios del inicio pueden mandar los datos por GET o por POST
+$datos = ($_SERVER["REQUEST_METHOD"] === "POST") ? $_POST : $_GET;
+
+$nombre       = trim($datos["nombre"] ?? "");
+$correo       = trim($datos["correo"] ?? "");
+$libro        = trim($datos["libro"] ?? "");
+$calificacion = trim($datos["calificacion"] ?? "");
+$comentario   = trim($datos["comentario"] ?? "");
+
+$errores = [];
+$guardado = false;
+
+// Validaciones del servidor
+if ($nombre === "") {
+    $errores[] = "El nombre es obligatorio.";
+} elseif (mb_strlen($nombre) > 100) {
+    $errores[] = "El nombre no puede tener más de 100 caracteres.";
+}
+
+if ($correo === "") {
+    $errores[] = "El correo es obligatorio.";
+} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    $errores[] = "Debes proporcionar un correo válido.";
+} elseif (mb_strlen($correo) > 150) {
+    $errores[] = "El correo no puede tener más de 150 caracteres.";
+}
+
+if ($libro === "") {
+    $errores[] = "Debes indicar qué libro estás reseñando.";
+} elseif (mb_strlen($libro) > 150) {
+    $errores[] = "El nombre del libro no puede tener más de 150 caracteres.";
+}
+
+$calificacionInt = filter_var($calificacion, FILTER_VALIDATE_INT, [
+    "options" => ["min_range" => 1, "max_range" => 5]
+]);
+if ($calificacionInt === false) {
+    $errores[] = "La calificación debe ser un número entero entre 1 y 5.";
+}
+
+if ($comentario === "") {
+    $errores[] = "El comentario es obligatorio.";
+}
+
+// Guardar solo si no hay errores, con consulta preparada
+if (count($errores) === 0) {
+    try {
+        $sql = "INSERT INTO resenas (nombre, correo, libro, calificacion, comentario, fecha)
+                VALUES (?, ?, ?, ?, ?, CURDATE())";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("sssis", $nombre, $correo, $libro, $calificacionInt, $comentario);
+        $stmt->execute();
+        $stmt->close();
+        $guardado = true;
+    } catch (mysqli_sql_exception $e) {
+        error_log("Error al guardar reseña: " . $e->getMessage());
+        $errores[] = "No fue posible guardar la reseña. Intenta de nuevo más tarde.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reseña recibida</title>
+    <title>Reseña recibida - El Árbol de Higos</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>El Árbol de Higos</h1>
-    <h2>Resultado de tu reseña</h2>
+    <div id="principal">
 
-    <?php
-        require_once "conexion.php";
+        <h1>El Árbol de Higos</h1>
+        <h2>Resultado de tu reseña</h2>
 
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : "";
-            $correo = isset($_GET['correo']) ? $_GET['correo'] : "";
-            $calificacion = isset($_GET['calificacion']) ? $_GET['calificacion'] : "";
-            $libro = isset($_GET['libro']) ? $_GET['libro'] : "";
-            $comentario = isset($_GET['comentario']) ? $_GET['comentario'] : "";
-        } else {
-            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
-            $correo = isset($_POST['correo']) ? $_POST['correo'] : "";
-            $calificacion = isset($_POST['calificacion']) ? $_POST['calificacion'] : "";
-            $libro = isset($_POST['libro']) ? $_POST['libro'] : "";
-            $comentario = isset($_POST['comentario']) ? $_POST['comentario'] : "";
-        }
+        <?php if (count($errores) > 0) { ?>
+            <div class="mensaje-error">
+                <p>Se encontraron los siguientes errores:</p>
+                <ul>
+                    <?php foreach ($errores as $error) { ?>
+                        <li><?php echo $error; ?></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
 
-        $errores = array();
+        <?php if ($guardado) { ?>
+            <div class="mensaje-exito">Reseña guardada correctamente en la base de datos.</div>
+            <p><strong>Nombre:</strong> <?php echo htmlspecialchars($nombre, ENT_QUOTES, "UTF-8"); ?></p>
+            <p><strong>Correo:</strong> <?php echo htmlspecialchars($correo, ENT_QUOTES, "UTF-8"); ?></p>
+            <p><strong>Calificación:</strong> <?php echo (int)$calificacionInt; ?></p>
+            <p><strong>Libro:</strong> <?php echo htmlspecialchars($libro, ENT_QUOTES, "UTF-8"); ?></p>
+            <p><strong>Comentario:</strong> <?php echo htmlspecialchars($comentario, ENT_QUOTES, "UTF-8"); ?></p>
+        <?php } ?>
 
-        if (empty($nombre)) {
-            $errores[] = "El nombre es obligatorio.";
-        }
+        <p><a href="index.php">Volver al formulario</a> | <a href="listar.php">Administrar reseñas</a></p>
 
-        if (empty($correo)) {
-            $errores[] = "El correo es obligatorio.";
-        } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-            $errores[] = "Debes proporcionar un correo válido.";
-        }
-
-        if (empty($calificacion)) {
-            $errores[] = "La calificación es obligatoria.";
-        } elseif (!is_numeric($calificacion) || $calificacion < 1 || $calificacion > 5) {
-            $errores[] = "La calificación debe ser un número entre 1 y 5.";
-        }
-
-        if (empty($libro)) {
-            $errores[] = "Debes indicar qué libro estás reseñando.";
-        }
-
-        if (empty($comentario)) {
-            $errores[] = "El comentario es obligatorio.";
-        }
-
-        if (count($errores) > 0) {
-            echo "<h3>Se encontraron los siguientes errores:</h3>";
-            echo "<ul>";
-            foreach ($errores as $error) {
-                echo "<li>⚠️ $error</li>";
-            }
-            echo "</ul>";
-        } else {
-            $sql = "INSERT INTO resenas (nombre, correo, libro, calificacion, comentario)
-                    VALUES ('$nombre', '$correo', '$libro', '$calificacion', '$comentario')";
-
-            if ($conexion->query($sql)) {
-                echo "<h3>✔️ Reseña guardada correctamente en la base de datos</h3>";
-                echo "<p><strong>Nombre:</strong> $nombre</p>";
-                echo "<p><strong>Correo:</strong> $correo</p>";
-                echo "<p><strong>Calificación:</strong> $calificacion</p>";
-                echo "<p><strong>Libro:</strong> $libro</p>";
-                echo "<p><strong>Comentario:</strong> $comentario</p>";
-            } else {
-                echo "<p>Error al guardar: " . $conexion->error . "</p>";
-            }
-        }
-    ?>
-
-    <p><a href="index.php">Volver al formulario</a></p>
-
+    </div>
 </body>
 </html>
