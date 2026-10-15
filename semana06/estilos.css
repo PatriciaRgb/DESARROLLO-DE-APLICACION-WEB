@@ -175,3 +175,20 @@ tr:nth-child(even) {
 .btn-eliminar:hover {
     background-color: #ffebee;
 }
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px 0 20px 0;
+}
+
+.menu a {
+    color: #c2185b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}

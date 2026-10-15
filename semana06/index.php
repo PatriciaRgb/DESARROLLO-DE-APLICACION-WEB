@@ -9,6 +9,12 @@
     <div id="principal">
 
         <h1 id="titulo">El Árbol de Higos</h1>
+        <nav class="menu">
+    <a href="index.php">Inicio</a>
+    <a href="crear.php">Nueva reseña</a>
+    <a href="listar.php">Administrar reseñas</a>
+    <a href="resenas.php">Reseñas públicas</a>
+</nav>
 
         <button id="btnSaludar">Saludar</button>
 
