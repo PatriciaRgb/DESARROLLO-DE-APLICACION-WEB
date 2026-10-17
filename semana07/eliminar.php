@@ -1,4 +1,5 @@
 <?php
+require_once "proteger.php";
 require_once "conexion.php";
 
 // 1) Solo se acepta POST. Si alguien abre esta dirección directamente (GET),

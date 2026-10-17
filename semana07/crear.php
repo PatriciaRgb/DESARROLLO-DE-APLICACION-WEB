@@ -1,4 +1,5 @@
 <?php
+require_once "proteger.php";
 require_once "conexion.php";
 
 $errores = [];
@@ -120,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit">Guardar reseña</button>
         </form>
 
-        <p><a href="resenas.php">Ver reseñas</a> | <a href="index.php">Volver al inicio</a></p>
+        <p><a href="listar.php">Administrar reseñas</a> | <a href="panel.php">Volver al panel</a></p>
 
     </div>
 </body>

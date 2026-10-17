@@ -1,4 +1,5 @@
 <?php
+require_once "proteger.php";
 require_once "conexion.php";
 
 // Mensajes permitidos (lista cerrada: nunca se imprime lo que venga en la URL)
@@ -91,7 +92,7 @@ try {
             </table>
         <?php } ?>
 
-        <p><a href="index.php">Volver al inicio</a></p>
+        <p><a href="panel.php">Volver al panel</a> | <a href="logout.php">Cerrar sesión</a></p>
 
     </div>
 </body>
