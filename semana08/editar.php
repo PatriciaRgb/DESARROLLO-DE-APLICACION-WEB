@@ -78,9 +78,12 @@ if ($esPost) {
     }
 
     if ($comentario === "") {
-        $errores[] = "El comentario es obligatorio.";
-    }
-
+    $errores[] = "El comentario es obligatorio.";
+} elseif (mb_strlen($comentario) < 10) {
+    $errores[] = "El comentario debe tener al menos 10 caracteres.";
+} elseif (mb_strlen($comentario) > 1000) {
+    $errores[] = "El comentario no puede tener más de 1000 caracteres.";
+}
     if (count($errores) === 0) {
         try {
             $sql = "UPDATE resenas

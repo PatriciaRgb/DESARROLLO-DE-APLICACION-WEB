@@ -46,11 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($calificacionInt === false) {
         $errores[] = "La calificación debe ser un número entero entre 1 y 5.";
     }
-
-    if ($comentario === "") {
-        $errores[] = "El comentario es obligatorio.";
-    }
-
+if ($comentario === "") {
+    $errores[] = "El comentario es obligatorio.";
+} elseif (mb_strlen($comentario) < 10) {
+    $errores[] = "El comentario debe tener al menos 10 caracteres.";
+} elseif (mb_strlen($comentario) > 1000) {
+    $errores[] = "El comentario no puede tener más de 1000 caracteres.";
+}
     // Guardar solo si no hay errores
     if (count($errores) === 0) {
         try {
