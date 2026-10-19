@@ -82,7 +82,9 @@ El menú y la lista se adaptan al rol, pero eso es solo comodidad: la barrera re
 
 **Resultado obtenido:** ambas operaciones funcionaron, y la reseña desapareció de la lista.
 
-![Editar y eliminar como administrador](img/13-admin-crud-funciona.png)
+![Administrador: CRUD (1)](img/13.0-admin-crud-funciona.png)
+![Administrador: CRUD (2)](img/13.02-admin-crud-funciona.png)
+![Administrador: CRUD (3)](img/13.03-admin-crud-funciona..png)
 
 ---
 
