@@ -1,5 +1,6 @@
 <?php
-require_once "proteger.php";
+require_once "autorizacion.php";
+exigirRol(["administrador"]);
 require_once "conexion.php";
 
 $esPost = ($_SERVER["REQUEST_METHOD"] === "POST");

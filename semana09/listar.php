@@ -1,5 +1,6 @@
 <?php
-require_once "proteger.php";
+require_once "autorizacion.php";
+exigirRol(["administrador", "consulta"]);
 require_once "conexion.php";
 
 // Mensajes permitidos (lista cerrada: nunca se imprime lo que venga en la URL)
