@@ -3,6 +3,8 @@ require_once "autorizacion.php";
 exigirRol(["administrador", "consulta"]);
 require_once "conexion.php";
 
+$esAdmin = tieneRol(["administrador"]);
+
 // Mensajes permitidos (lista cerrada: nunca se imprime lo que venga en la URL)
 $mensajes = [
     "creado"    => "Reseña guardada correctamente.",
@@ -39,20 +41,22 @@ try {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Administrar reseñas - El Árbol de Higos</title>
+    <title>Reseñas - El Árbol de Higos</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <div id="principal">
 
         <h1>El Árbol de Higos</h1>
-        <h2>Administrar reseñas</h2>
+        <h2><?php echo $esAdmin ? "Administrar reseñas" : "Consultar reseñas"; ?></h2>
 
         <?php if ($aviso !== "") { ?>
             <div class="<?php echo $claseAviso; ?>"><?php echo $aviso; ?></div>
         <?php } ?>
 
-        <p><a class="btn-enlace" href="crear.php">+ Nueva reseña</a></p>
+        <?php if ($esAdmin) { ?>
+            <p><a class="btn-enlace" href="crear.php">+ Nueva reseña</a></p>
+        <?php } ?>
 
         <?php if ($errorConsulta) { ?>
             <div class="mensaje-error">No fue posible consultar las reseñas en este momento.</div>
@@ -69,7 +73,9 @@ try {
                     <th>Calificación</th>
                     <th>Comentario</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
+                    <?php if ($esAdmin) { ?>
+                        <th>Acciones</th>
+                    <?php } ?>
                 </tr>
                 <?php foreach ($filas as $fila) { ?>
                 <tr>
@@ -79,6 +85,7 @@ try {
                     <td><?php echo (int)$fila["calificacion"]; ?></td>
                     <td><?php echo htmlspecialchars($fila["comentario"], ENT_QUOTES, "UTF-8"); ?></td>
                     <td><?php echo $fila["fecha"] ? htmlspecialchars($fila["fecha"], ENT_QUOTES, "UTF-8") : "—"; ?></td>
+                    <?php if ($esAdmin) { ?>
                     <td>
                         <a class="btn-enlace" href="editar.php?id=<?php echo (int)$fila["id"]; ?>">Editar</a>
 
@@ -88,6 +95,7 @@ try {
                             <button type="submit" class="btn-eliminar">Eliminar</button>
                         </form>
                     </td>
+                    <?php } ?>
                 </tr>
                 <?php } ?>
             </table>
