@@ -68,7 +68,7 @@ try {
                     <th>Comentario</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
-                </tr>
+                </tr>s
                 <?php foreach ($filas as $fila) { ?>
                 <tr>
                     <td><?php echo (int)$fila["id"]; ?></td>

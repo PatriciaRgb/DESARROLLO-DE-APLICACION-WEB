@@ -19,7 +19,7 @@ if ($usuario === "" || $contrasena === "") {
 // Buscar al usuario con consulta preparada
 try {
     $stmt = $conexion->prepare(
-        "SELECT id, nombre, usuario, password_hash, activo
+        "SELECT id, nombre, usuario, rol, password_hash, activo
          FROM usuarios
          WHERE usuario = ?
          LIMIT 1"
@@ -43,6 +43,7 @@ if ($fila
     $_SESSION["usuario_id"] = (int)$fila["id"];
     $_SESSION["nombre"]     = $fila["nombre"];
     $_SESSION["usuario"]    = $fila["usuario"];
+    $_SESSION["rol"]        = $fila["rol"];
 
     header("Location: panel.php");
     exit;
