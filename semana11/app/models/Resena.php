@@ -11,15 +11,31 @@ class Resena
         $this->conexion = $conexion;
     }
 
-    // Todas las reseñas, de la más reciente a la más antigua.
-    // Si MySQL falla lanza mysqli_sql_exception: el controlador decide qué responder.
+    // De la más reciente a la más antigua (lista del administrador)
     public function obtenerTodas(): array
     {
-        $resultado = $this->conexion->query(
+        return $this->consultar(
             "SELECT id, nombre, libro, calificacion, comentario, fecha
              FROM resenas
              ORDER BY id DESC"
         );
+    }
+
+    // De la mejor calificada a la peor (página pública)
+    public function obtenerPorCalificacion(): array
+    {
+        return $this->consultar(
+            "SELECT id, nombre, libro, calificacion, comentario, fecha
+             FROM resenas
+             ORDER BY calificacion DESC, id DESC"
+        );
+    }
+
+    // Ejecuta una consulta fija definida arriba y da forma a las filas.
+    // Si MySQL falla lanza mysqli_sql_exception: el controlador decide qué responder.
+    private function consultar(string $sql): array
+    {
+        $resultado = $this->conexion->query($sql);
 
         $resenas = [];
         while ($fila = $resultado->fetch_assoc()) {
