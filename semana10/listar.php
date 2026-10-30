@@ -1,7 +1,6 @@
 <?php
 require_once "autorizacion.php";
 exigirRol(["administrador", "consulta"]);
-require_once "conexion.php";
 
 $esAdmin = tieneRol(["administrador"]);
 
@@ -20,21 +19,6 @@ if (isset($_GET["mensaje"]) && array_key_exists($_GET["mensaje"], $mensajes)) {
     if ($_GET["mensaje"] === "noexiste") {
         $claseAviso = "mensaje-error";
     }
-}
-
-$filas = [];
-$errorConsulta = false;
-
-try {
-    $resultado = $conexion->query("SELECT id, nombre, libro, calificacion, comentario, fecha
-                                   FROM resenas
-                                   ORDER BY id DESC");
-    while ($fila = $resultado->fetch_assoc()) {
-        $filas[] = $fila;
-    }
-} catch (mysqli_sql_exception $e) {
-    error_log("Error al listar reseñas: " . $e->getMessage());
-    $errorConsulta = true;
 }
 ?>
 <!DOCTYPE html>
@@ -58,51 +42,19 @@ try {
             <p><a class="btn-enlace" href="crear.php">+ Nueva reseña</a></p>
         <?php } ?>
 
-        <?php if ($errorConsulta) { ?>
-            <div class="mensaje-error">No fue posible consultar las reseñas en este momento.</div>
+        <p><button type="button" id="btnActualizar">Actualizar lista</button></p>
 
-        <?php } elseif (count($filas) === 0) { ?>
-            <div class="mensaje-error">Todavía no hay reseñas registradas.</div>
+        <div id="estadoLista" role="status"></div>
+        <div id="zonaTabla"></div>
 
-        <?php } else { ?>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Libro</th>
-                    <th>Calificación</th>
-                    <th>Comentario</th>
-                    <th>Fecha</th>
-                    <?php if ($esAdmin) { ?>
-                        <th>Acciones</th>
-                    <?php } ?>
-                </tr>
-                <?php foreach ($filas as $fila) { ?>
-                <tr>
-                    <td><?php echo (int)$fila["id"]; ?></td>
-                    <td><?php echo htmlspecialchars($fila["nombre"], ENT_QUOTES, "UTF-8"); ?></td>
-                    <td><?php echo htmlspecialchars($fila["libro"], ENT_QUOTES, "UTF-8"); ?></td>
-                    <td><?php echo (int)$fila["calificacion"]; ?></td>
-                    <td><?php echo htmlspecialchars($fila["comentario"], ENT_QUOTES, "UTF-8"); ?></td>
-                    <td><?php echo $fila["fecha"] ? htmlspecialchars($fila["fecha"], ENT_QUOTES, "UTF-8") : "—"; ?></td>
-                    <?php if ($esAdmin) { ?>
-                    <td>
-                        <a class="btn-enlace" href="editar.php?id=<?php echo (int)$fila["id"]; ?>">Editar</a>
-
-                        <form class="form-inline" action="eliminar.php" method="POST"
-                              onsubmit="return confirm('¿Seguro que quieres eliminar esta reseña?');">
-                            <input type="hidden" name="id" value="<?php echo (int)$fila["id"]; ?>">
-                            <button type="submit" class="btn-eliminar">Eliminar</button>
-                        </form>
-                    </td>
-                    <?php } ?>
-                </tr>
-                <?php } ?>
-            </table>
-        <?php } ?>
+        <noscript>
+            <div class="mensaje-error">Activa JavaScript para ver la lista de reseñas.</div>
+        </noscript>
 
         <p><a href="panel.php">Volver al panel</a> | <a href="logout.php">Cerrar sesión</a></p>
 
     </div>
+
+    <script src="listar.js"></script>
 </body>
 </html>
