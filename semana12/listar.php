@@ -4,38 +4,28 @@ exigirRol(["administrador", "consulta"]);
 
 $esAdmin = tieneRol(["administrador"]);
 
-// Mensajes permitidos (lista cerrada: nunca se imprime lo que venga en la URL)
-$mensajes = [
-    "creado"    => "Reseña guardada correctamente.",
-    "editado"   => "Reseña actualizada correctamente.",
-    "eliminado" => "Reseña eliminada correctamente.",
-    "noexiste"  => "La reseña solicitada no existe."
+// Avisos permitidos: lista cerrada, nunca se imprime lo que venga en la URL
+$avisos = [
+    "creado"    => ["exito", "Reseña guardada correctamente."],
+    "editado"   => ["exito", "Reseña actualizada correctamente."],
+    "eliminado" => ["exito", "Reseña eliminada correctamente."],
+    "noexiste"  => ["error", "La reseña solicitada no existe."]
 ];
 
-$aviso = "";
-$claseAviso = "mensaje-exito";
-if (isset($_GET["mensaje"]) && array_key_exists($_GET["mensaje"], $mensajes)) {
-    $aviso = $mensajes[$_GET["mensaje"]];
-    if ($_GET["mensaje"] === "noexiste") {
-        $claseAviso = "mensaje-error";
-    }
+$aviso = null;
+$claveAviso = $_GET["mensaje"] ?? "";
+if (is_string($claveAviso) && array_key_exists($claveAviso, $avisos)) {
+    $aviso = $avisos[$claveAviso];
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Reseñas - El Árbol de Higos</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <div id="principal">
 
-        <h1>El Árbol de Higos</h1>
+$tituloPagina = $esAdmin ? "Administrar reseñas" : "Consultar reseñas";
+require __DIR__ . "/app/views/layouts/header.php";
+?>
+
         <h2><?php echo $esAdmin ? "Administrar reseñas" : "Consultar reseñas"; ?></h2>
 
-        <?php if ($aviso !== "") { ?>
-            <div class="<?php echo $claseAviso; ?>"><?php echo $aviso; ?></div>
+        <?php if ($aviso !== null) { ?>
+            <?php mostrarMensaje($aviso[0], $aviso[1]); ?>
         <?php } ?>
 
         <?php if ($esAdmin) { ?>
@@ -48,13 +38,10 @@ if (isset($_GET["mensaje"]) && array_key_exists($_GET["mensaje"], $mensajes)) {
         <div id="zonaTabla"></div>
 
         <noscript>
-            <div class="mensaje-error">Activa JavaScript para ver la lista de reseñas.</div>
+            <?php mostrarMensaje("error", "Activa JavaScript para ver la lista de reseñas."); ?>
         </noscript>
 
-        <p><a href="panel.php">Volver al panel</a> | <a href="logout.php">Cerrar sesión</a></p>
-
-    </div>
-
-    <script src="listar.js"></script>
-</body>
-</html>
+<?php
+$scripts = ["listar.js"];
+require __DIR__ . "/app/views/layouts/footer.php";
+?>

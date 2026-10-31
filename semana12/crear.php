@@ -2,6 +2,8 @@
 require_once "autorizacion.php";
 exigirRol(["administrador"]);
 require_once "conexion.php";
+require_once __DIR__ . "/app/helpers/entrada.php";
+
 $errores = [];
 $exito = false;
 
@@ -13,11 +15,11 @@ $comentario = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $nombre = trim($_POST["nombre"] ?? "");
-    $correo = trim($_POST["correo"] ?? "");
-    $libro = trim($_POST["libro"] ?? "");
-    $calificacion = trim($_POST["calificacion"] ?? "");
-    $comentario = trim($_POST["comentario"] ?? "");
+    $nombre       = textoPost("nombre");
+    $correo       = textoPost("correo");
+    $libro        = textoPost("libro");
+    $calificacion = textoPost("calificacion");
+    $comentario   = textoPost("comentario");
 
     // Validaciones del servidor
     if ($nombre === "") {
@@ -46,13 +48,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($calificacionInt === false) {
         $errores[] = "La calificación debe ser un número entero entre 1 y 5.";
     }
-if ($comentario === "") {
-    $errores[] = "El comentario es obligatorio.";
-} elseif (mb_strlen($comentario) < 10) {
-    $errores[] = "El comentario debe tener al menos 10 caracteres.";
-} elseif (mb_strlen($comentario) > 1000) {
-    $errores[] = "El comentario no puede tener más de 1000 caracteres.";
-}
+
+    if ($comentario === "") {
+        $errores[] = "El comentario es obligatorio.";
+    } elseif (mb_strlen($comentario) < 10) {
+        $errores[] = "El comentario debe tener al menos 10 caracteres.";
+    } elseif (mb_strlen($comentario) > 1000) {
+        $errores[] = "El comentario no puede tener más de 1000 caracteres.";
+    }
+
     // Guardar solo si no hay errores
     if (count($errores) === 0) {
         try {
@@ -71,60 +75,29 @@ if ($comentario === "") {
         }
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Nueva reseña - El Árbol de Higos</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <div id="principal">
 
-        <h1>El Árbol de Higos</h1>
+$tituloPagina = "Nueva reseña";
+require_once __DIR__ . "/app/views/componentes/campo.php";
+require __DIR__ . "/app/views/layouts/header.php";
+?>
+
         <h2>Registrar una reseña</h2>
 
         <?php if ($exito) { ?>
-            <div class="mensaje-exito">Reseña guardada correctamente.</div>
+            <?php mostrarMensaje("exito", "Reseña guardada correctamente."); ?>
         <?php } ?>
 
-        <?php if (count($errores) > 0) { ?>
-            <div class="mensaje-error">
-                <ul>
-                    <?php foreach ($errores as $error) { ?>
-                        <li><?php echo $error; ?></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        <?php } ?>
+        <?php mostrarErrores($errores); ?>
 
         <form action="crear.php" method="POST" novalidate>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"
-                   value="<?php echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'); ?>">
-
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo"
-                   value="<?php echo htmlspecialchars($correo, ENT_QUOTES, 'UTF-8'); ?>">
-
-            <label for="libro">Libro reseñado:</label>
-            <input type="text" id="libro" name="libro"
-                   value="<?php echo htmlspecialchars($libro, ENT_QUOTES, 'UTF-8'); ?>">
-
-            <label for="calificacion">Calificación (1-5):</label>
-            <input type="number" id="calificacion" name="calificacion" min="1" max="5"
-                   value="<?php echo htmlspecialchars($calificacion, ENT_QUOTES, 'UTF-8'); ?>">
-
-            <label for="comentario">Tu reseña:</label>
-            <textarea id="comentario" name="comentario" rows="4"><?php echo htmlspecialchars($comentario, ENT_QUOTES, 'UTF-8'); ?></textarea>
+            <?php campoFormulario("nombre", "Nombre:", $nombre); ?>
+            <?php campoFormulario("correo", "Correo electrónico:", $correo, "email"); ?>
+            <?php campoFormulario("libro", "Libro reseñado:", $libro); ?>
+            <?php campoFormulario("calificacion", "Calificación (1-5):", $calificacion, "number", 1, 5); ?>
+            <?php campoAreaTexto("comentario", "Tu reseña:", $comentario); ?>
 
             <button type="submit">Guardar reseña</button>
         </form>
 
-        <p><a href="listar.php">Administrar reseñas</a> | <a href="panel.php">Volver al panel</a></p>
-
-    </div>
-</body>
-</html>
+<?php require __DIR__ . "/app/views/layouts/footer.php"; ?>
