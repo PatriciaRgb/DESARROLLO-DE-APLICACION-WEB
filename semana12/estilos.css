@@ -192,3 +192,20 @@ tr:nth-child(even) {
 .menu a:hover {
     text-decoration: underline;
 }
+.mensaje-advertencia {
+    background-color: #fff8e1;
+    color: #8d6e00;
+    padding: 10px;
+    border: 1px solid #f9a825;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.pie {
+    text-align: center;
+    color: #ad1457;
+    font-size: 14px;
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 1px solid #f48fb1;
+}

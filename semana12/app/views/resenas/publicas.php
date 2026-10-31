@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Reseñas - El Árbol de Higos</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <div id="principal">
+<?php
+$tituloPagina = "Reseñas";
+require __DIR__ . "/../layouts/header.php";
+?>
 
-        <h1>El Árbol de Higos</h1>
         <h2>Reseñas de nuestros lectores</h2>
 
         <?php if ($errorConsulta) { ?>
-            <div class="mensaje-error">No fue posible mostrar las reseñas en este momento.</div>
+            <?php mostrarMensaje("error", "No fue posible mostrar las reseñas en este momento."); ?>
 
         <?php } elseif (count($resenas) === 0) { ?>
-            <div class="mensaje-error">Todavía no hay reseñas registradas.</div>
+            <?php mostrarMensaje("advertencia", "Todavía no hay reseñas registradas."); ?>
 
         <?php } else { ?>
             <table>
@@ -38,8 +32,4 @@
             </table>
         <?php } ?>
 
-        <p><a href="index.php">Volver al inicio</a></p>
-
-    </div>
-</body>
-</html>
+<?php require __DIR__ . "/../layouts/footer.php"; ?>
