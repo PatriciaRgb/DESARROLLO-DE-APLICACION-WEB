@@ -4,6 +4,21 @@
 
 class Resena
 {
+    // Lista permitida: lo que llega del usuario se usa SOLO para elegir una clave de aquí.
+    // El nombre de la columna que va al SQL es el valor, escrito por mí.
+    private const COLUMNAS_ORDEN = [
+        "id"           => "id",
+        "nombre"       => "nombre",
+        "libro"        => "libro",
+        "calificacion" => "calificacion",
+        "fecha"        => "fecha"
+    ];
+
+    private const DIRECCIONES = [
+        "asc"  => "ASC",
+        "desc" => "DESC"
+    ];
+
     private mysqli $conexion;
 
     public function __construct(mysqli $conexion)
@@ -11,7 +26,17 @@ class Resena
         $this->conexion = $conexion;
     }
 
-    // De la más reciente a la más antigua (lista del administrador)
+    public static function ordenesPermitidos(): array
+    {
+        return array_keys(self::COLUMNAS_ORDEN);
+    }
+
+    public static function direccionesPermitidas(): array
+    {
+        return array_keys(self::DIRECCIONES);
+    }
+
+    // De la más reciente a la más antigua
     public function obtenerTodas(): array
     {
         return $this->consultar(
@@ -31,12 +56,49 @@ class Resena
         );
     }
 
-    // Ejecuta una consulta fija definida arriba y da forma a las filas.
-    // Si MySQL falla lanza mysqli_sql_exception: el controlador decide qué responder.
+    // Búsqueda y orden. Aunque el controlador ya valida, aquí se vuelve a comprobar:
+    // el modelo no confía en quien lo llame.
+    public function buscar(string $texto, string $orden, string $direccion): array
+    {
+        if (!isset(self::COLUMNAS_ORDEN[$orden]) || !isset(self::DIRECCIONES[$direccion])) {
+            throw new InvalidArgumentException("Criterio de orden no permitido.");
+        }
+
+        $columna = self::COLUMNAS_ORDEN[$orden];
+        $sentido = self::DIRECCIONES[$direccion];
+
+        $sql = "SELECT id, nombre, libro, calificacion, comentario, fecha FROM resenas";
+
+        if ($texto !== "") {
+            $sql .= " WHERE (nombre LIKE ? OR libro LIKE ? OR comentario LIKE ?)";
+        }
+
+        // $columna y $sentido salen de las listas de arriba, nunca de la petición
+        $sql .= " ORDER BY " . $columna . " " . $sentido . ", id DESC";
+
+        $stmt = $this->conexion->prepare($sql);
+
+        if ($texto !== "") {
+            // Se escapan \ % _ para buscarlos literalmente (el escape por defecto de LIKE es \)
+            $patron = "%" . addcslashes($texto, "\\%_") . "%";
+            $stmt->bind_param("sss", $patron, $patron, $patron);
+        }
+
+        $stmt->execute();
+        $resenas = $this->darForma($stmt->get_result());
+        $stmt->close();
+
+        return $resenas;
+    }
+
+    // Consulta fija definida arriba (sin datos del usuario)
     private function consultar(string $sql): array
     {
-        $resultado = $this->conexion->query($sql);
+        return $this->darForma($this->conexion->query($sql));
+    }
 
+    private function darForma(mysqli_result $resultado): array
+    {
         $resenas = [];
         while ($fila = $resultado->fetch_assoc()) {
             $resenas[] = [
@@ -48,7 +110,6 @@ class Resena
                 "fecha"        => $fila["fecha"]
             ];
         }
-
         return $resenas;
     }
 }
