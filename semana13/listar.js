@@ -1,8 +1,23 @@
 (function () {
     const URL_API = "api/resenas.php";
-    const zona = document.getElementById("zonaTabla");
-    const estado = document.getElementById("estadoLista");
-    const boton = document.getElementById("btnActualizar");
+
+    const zona      = document.getElementById("zonaTabla");
+    const estado    = document.getElementById("estadoLista");
+    const filtros   = document.getElementById("filtrosActivos");
+    const formulario = document.getElementById("formBusqueda");
+    const campoQ    = document.getElementById("q");
+    const selOrden  = document.getElementById("orden");
+    const selDir    = document.getElementById("dir");
+    const botones   = [
+        document.getElementById("btnBuscar"),
+        document.getElementById("btnLimpiar"),
+        document.getElementById("btnActualizar")
+    ];
+
+    const NOMBRE_ORDEN = {
+        id: "registro", nombre: "nombre", libro: "libro",
+        calificacion: "calificación", fecha: "fecha"
+    };
 
     function mostrarEstado(texto, clase) {
         estado.textContent = texto;
@@ -84,12 +99,60 @@
         return tabla;
     }
 
+    // Muestra qué criterios aplicó el servidor y actualiza la dirección de la página
+    function mostrarFiltros(f) {
+        const partes = [];
+        if (f.q !== "") {
+            partes.push("búsqueda «" + f.q + "»");
+        }
+        partes.push("orden por " + (NOMBRE_ORDEN[f.orden] || f.orden)
+                    + (f.dir === "asc" ? " (ascendente)" : " (descendente)"));
+        filtros.textContent = "Criterios activos: " + partes.join(" · ");
+
+        // La dirección guarda los criterios para que al recargar no se pierdan
+        const params = new URLSearchParams();
+        if (f.q !== "")        { params.set("q", f.q); }
+        if (f.orden !== "id")  { params.set("orden", f.orden); }
+        if (f.dir !== "desc")  { params.set("dir", f.dir); }
+        const consulta = params.toString();
+        history.replaceState(null, "", window.location.pathname + (consulta ? "?" + consulta : ""));
+    }
+
+    function existeOpcion(select, valor) {
+        return Array.from(select.options).some(function (op) { return op.value === valor; });
+    }
+
+    // Al abrir la página: si la dirección trae criterios, se ponen en el formulario.
+    // Solo se leen q, orden y dir, y el servidor los valida de todos modos.
+    function leerCriteriosIniciales() {
+        const url = new URLSearchParams(window.location.search);
+
+        const q = url.get("q");
+        if (q !== null) {
+            campoQ.value = q.slice(0, 50);
+        }
+        const orden = url.get("orden");
+        if (orden !== null && existeOpcion(selOrden, orden)) {
+            selOrden.value = orden;
+        }
+        const dir = url.get("dir");
+        if (dir !== null && existeOpcion(selDir, dir)) {
+            selDir.value = dir;
+        }
+    }
+
     async function cargarLista() {
-        boton.disabled = true;                       // evita peticiones repetidas
+        botones.forEach(function (b) { b.disabled = true; });   // evita peticiones repetidas
         mostrarEstado("Cargando reseñas…", "");
 
         try {
-            const respuesta = await fetch(URL_API, {
+            const consulta = new URLSearchParams({
+                q: campoQ.value.trim(),
+                orden: selOrden.value,
+                dir: selDir.value
+            });
+
+            const respuesta = await fetch(URL_API + "?" + consulta.toString(), {
                 headers: { "Accept": "application/json" },
                 credentials: "same-origin"
             });
@@ -108,7 +171,7 @@
                 cuerpo = null;
             }
 
-            // fetch() no considera error un 403 o un 500: se revisa a mano
+            // fetch() no considera error un 400, 403 o 500: se revisa a mano
             if (!respuesta.ok || cuerpo === null || cuerpo.ok !== true) {
                 const mensaje = (cuerpo && typeof cuerpo.mensaje === "string")
                     ? cuerpo.mensaje
@@ -117,9 +180,15 @@
             }
 
             zona.replaceChildren();                  // actualización parcial: solo esta zona
+            mostrarFiltros(cuerpo.filtros);
 
             if (cuerpo.datos.length === 0) {
-                mostrarEstado("Todavía no hay reseñas registradas.", "mensaje-error");
+                mostrarEstado(
+                    cuerpo.filtros.q !== ""
+                        ? "No hay reseñas que coincidan con «" + cuerpo.filtros.q + "»."
+                        : "Todavía no hay reseñas registradas.",
+                    "mensaje-error"
+                );
             } else {
                 zona.appendChild(construirTabla(cuerpo.datos, cuerpo.puedeAdministrar === true));
                 const hora = new Date().toLocaleTimeString("es-MX");
@@ -128,6 +197,7 @@
 
         } catch (error) {
             zona.replaceChildren();
+            filtros.textContent = "";
 
             // Un TypeError de fetch() significa que no hubo comunicación con el servidor
             const sinConexion = (error instanceof TypeError);
@@ -139,10 +209,24 @@
             );
             console.error("Fallo al cargar la lista:", error.name);
         } finally {
-            boton.disabled = false;
+            botones.forEach(function (b) { b.disabled = false; });
         }
     }
 
-    boton.addEventListener("click", cargarLista);
+    formulario.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        cargarLista();
+    });
+
+    document.getElementById("btnLimpiar").addEventListener("click", function () {
+        campoQ.value = "";
+        selOrden.value = "id";
+        selDir.value = "desc";
+        cargarLista();
+    });
+
+    document.getElementById("btnActualizar").addEventListener("click", cargarLista);
+
+    leerCriteriosIniciales();
     cargarLista();                                   // carga inicial al abrir la página
 })();

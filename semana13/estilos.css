@@ -209,3 +209,45 @@ tr:nth-child(even) {
     padding-top: 12px;
     border-top: 1px solid #f48fb1;
 }
+.form-busqueda {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.form-busqueda .grupo {
+    flex: 1 1 180px;
+}
+
+.form-busqueda select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #f48fb1;
+    border-radius: 6px;
+    font-family: Georgia, serif;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.grupo-botones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-secundario {
+    background-color: #ffffff;
+    color: #c2185b;
+    border: 1px solid #c2185b;
+}
+
+.btn-secundario:hover {
+    background-color: #fce4ec;
+}
+
+.filtros-activos {
+    color: #ad1457;
+    font-size: 14px;
+    margin-top: 8px;
+}
