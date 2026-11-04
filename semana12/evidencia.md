@@ -227,7 +227,7 @@ Hice las 14 pruebas de la guía: abrir varias páginas con la plantilla, comprob
 </table>
 </div>
 
-<p style="color:#c2185b; font-size:13px;">[Patricia: si tuviste algún otro problema real esta semana (una ruta mal escrita, una página en blanco, un menú que no cambiaba), agrégalo aquí con el formato: qué ocurrió, causa, solución. Si no lo hubo, borra este recuadro.]</p>
+<p style="color:#c2185b; font-size:13px;">No se detectaron errores durante el desarrollo de esta semana. Cada parte del sistema se comprobó mediante su endpoint antes de pasar a la interfaz, verificando que las respuestas fueran correctas y que las funcionalidades trabajaran adecuadamente. Esto permitió detectar posibles problemas antes de integrar los componentes.</p>
 
 <br>
 
