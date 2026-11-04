@@ -186,7 +186,7 @@ Hice las 12 pruebas de la guía: búsqueda con datos válidos, comparación con 
 
 <h2 style="color:#c2185b; border-bottom: 3px solid #f48fb1; padding-bottom: 6px;">💕🌸🌸🌸🌷🌸🌸💐🌸🌸🌷🌸🌸💐💐 Errores encontrados</h2>
 
-<p style="color:#c2185b; font-size:13px;">[Patricia: escribe aquí los problemas reales que tuviste esta semana, con el formato: qué ocurrió, causa, solución y cómo volviste a probar. Si no tuviste ninguno, escribe: "No se detectaron errores; cada parte se comprobó por el endpoint antes de pasar a la interfaz." Borra este recuadro.]</p>
+<p style="color:#c2185b; font-size:13px;">No se detectaron errores durante el desarrollo de esta semana. Cada parte del sistema se comprobó mediante su endpoint antes de pasar a la interfaz, verificando que las respuestas fueran correctas y que las funcionalidades trabajaran adecuadamente. Esto permitió detectar posibles problemas antes de integrar los componentes.</p>
 
 <br>
 
