@@ -1,15 +1,15 @@
 # Estado inicial — Semana 14
 
-**Proyecto:** El Árbol de Higos
+**Proyecto:** 💐💐💐💐 El Árbol de Higos 💐💐💐💐
 **Versión que se prueba:** carpeta `semana14`, copia de `semana13`
 **Alumna:** Patricia Segura Resendiz
 **Fecha:** 4 de noviembre de 2026
 
-## 1. Versión de partida
+## 1. Versión de partida 💐💐💐💐
 
 La versión de partida es la entrega de la Semana 13 (búsqueda y ordenamiento de la lista de reseñas). El commit exacto queda marcado con la etiqueta de Git `semana14-inicio` (ver sección 6), que permite recuperarlo en cualquier momento.
 
-## 2. Revisión inicial
+## 2. Revisión inicial 💐💐💐💐
 
 Se marca cada punto solo después de comprobarlo en la aplicación:
 
@@ -22,7 +22,7 @@ Se marca cada punto solo después de comprobarlo en la aplicación:
 - [x] Hay cuentas de demostración preparadas (sección 5).
 - [x] No se usan credenciales reales en las evidencias.
 
-## 3. Estructura de archivos
+## 3. Estructura de archivos 💐💐💐💐
 
 | Carpeta o archivo | Contenido |
 |---|---|
@@ -45,7 +45,7 @@ cd /c/wamp64/www/DESARROLLO-DE-APLICACION-WEB/semana14
 find . -path ./img -prune -o -type f -print | sort
 ```
 
-## 4. Problemas conocidos al empezar
+## 4. Problemas conocidos al empezar 💐💐💐💐
 
 Son los que ya estaban documentados antes de ejecutar las pruebas:
 
@@ -60,7 +60,7 @@ Son los que ya estaban documentados antes de ejecutar las pruebas:
 | La lista no tiene paginación | `semana13/evidencia.md` |
 | La tienda aún no tiene catálogo de libros ni carrito: hoy gestiona las reseñas | `README.md` |
 
-## 5. Cuentas y datos de demostración
+## 5. Cuentas y datos de demostración 💐💐💐💐
 
 | Usuario | Rol | Estado |
 |---|---|---|
@@ -70,7 +70,7 @@ Son los que ya estaban documentados antes de ejecutar las pruebas:
 
 Las contraseñas no se escriben en el repositorio ni en este documento. Las pruebas que crean o borran registros se hacen únicamente con reseñas de demostración.
 
-## 6. Cómo recuperar la versión estable
+## 6. Cómo recuperar la versión estable 💐💐💐💐
 
 Se marca el commit de partida con una etiqueta de Git:
 
@@ -104,6 +104,6 @@ grep -rn "\[Patricia" --include="*.md" .
 
 Si el comando no imprime nada entre las dos secciones, no hay imágenes rotas; si sale algo, se corrige el documento y se vuelve a ejecutar.
 
-## 8. Estado general
+## 8. Estado general 💐💐💐💐
 
 Las funciones de la aplicación (formularios y validaciones, login y sesiones, CRUD de reseñas, roles y permisos, Fetch API, MVC en el módulo de consulta, plantilla y componentes, y búsqueda con ordenamiento) quedaron documentadas y probadas en la semana en que se construyeron. La revisión de esta semana, con `plan_pruebas.md`, comprueba que siguen funcionando **en conjunto**; sus resultados se registran en ese plan, y cualquier falla se registra en `registro_errores.md`.
