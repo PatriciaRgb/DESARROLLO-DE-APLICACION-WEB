@@ -50,23 +50,11 @@ mysql -u root -p < semana14/esquema.sql
 
 ### 3. Configurar la conexión 💐💐💐💐
 
-Los datos de conexión **no están en el repositorio**. En la carpeta `semana14`, copia la plantilla y edítala con tus datos:
-
 ```bash
 cp semana14/config.ejemplo.php semana14/config.php
 ```
 
-`config.php` está en `.gitignore`: no lo subas a GitHub.
-
 ### 4. Crear el primer usuario administrador 💐💐💐💐
-
-Genera el hash de una contraseña que elijas (no uses una que emplees en otros servicios):
-
-```bash
-php -r "echo password_hash('ESCRIBE_AQUI_TU_CLAVE', PASSWORD_DEFAULT);"
-```
-
-En MySQL, inserta el usuario con ese hash. La columna `rol` acepta solo `administrador` o `consulta`:
 
 ```sql
 USE arbol_de_higos;
@@ -74,9 +62,7 @@ INSERT INTO usuarios (nombre, usuario, correo, password_hash, rol)
 VALUES ('Administrador', 'admin', 'admin@example.com', 'PEGA_AQUI_EL_HASH', 'administrador');
 ```
 
-La contraseña nunca se guarda en la base de datos: solo su hash.
-
-### 5. Datos de demostración (opcional) 💐💐💐💐
+### 5. Datos de demostración  💐💐💐💐
 
 Para ver la aplicación con reseñas de ejemplo (todas ficticias):
 
@@ -84,20 +70,12 @@ Para ver la aplicación con reseñas de ejemplo (todas ficticias):
 mysql -u root -p < semana14/datos_demo.sql
 ```
 
-Incluye una reseña con HTML en el comentario, que sirve para comprobar que la salida se escapa.
-
 ### 6. Ejecutar 💐💐💐💐
 
 ```bash
 cd semana14
 php -S localhost:8000
 ```
-
-Abre `http://localhost:8000`. El acceso de administración está en el menú ("Acceso administrador").
-
-## Cuentas de demostración 💐💐💐💐
-
-Para las pruebas se usan dos cuentas con permisos distintos: una con rol `administrador` y otra con rol `consulta`. Sus contraseñas no se publican; se crean siguiendo el paso 4.
 
 ## Estructura de la versión final 💐💐💐💐
 
